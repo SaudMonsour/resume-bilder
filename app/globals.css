@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background); --color-foreground: var(--foreground);
+  --color-card: var(--card); --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover); --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary); --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent); --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive); --color-border: var(--border);
+  --color-input: var(--input); --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans); --font-mono: var(--font-geist-mono); --font-heading: var(--font-geist-sans);
+  --radius-sm: .55rem; --radius-md: .7rem; --radius-lg: .85rem; --radius-xl: 1.1rem; --radius-2xl: 1.35rem;
+}
+
+:root {
+  --background: #f5f5f7; --foreground: #1d1d1f; --card: #fff; --card-foreground: #1d1d1f;
+  --popover: #fff; --popover-foreground: #1d1d1f; --primary: #0071e3; --primary-foreground: #fff;
+  --secondary: #f5f5f7; --secondary-foreground: #1d1d1f; --muted: #f5f5f7; --muted-foreground: #6e6e73;
+  --accent: #eaf4ff; --accent-foreground: #0066cc; --destructive: #ff3b30; --border: rgb(0 0 0 / 10%);
+  --input: rgb(0 0 0 / 12%); --ring: #0071e3; --radius: .8rem;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { @apply font-sans; scroll-behavior: smooth; }
+  body { @apply bg-background text-foreground antialiased; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif; }
+  h1, h2, h3, h4, button, input, textarea, select { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Helvetica, Arial, sans-serif; }
+  button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+  ::selection { background: rgb(0 113 227 / 18%); }
+}
+
+@layer utilities {
+  .apple-card { border: 0; border-radius: 22px; background: rgb(255 255 255 / 92%); box-shadow: 0 1px 2px rgb(0 0 0 / 3%), 0 12px 34px rgb(0 0 0 / 4%); ring: 0; }
+}
+
+@font-face { font-family: Carlito; src: url('/fonts/Carlito-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: Carlito; src: url('/fonts/Carlito-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: Carlito; src: url('/fonts/Carlito-Italic.ttf') format('truetype'); font-style: italic; font-display: swap; }
+.resume-page { box-sizing: border-box; width: 595.45pt; min-width: 595.45pt; min-height: 841.7pt; padding: 46.8pt 44.65pt 36pt; font-family: Calibri, Carlito, sans-serif; font-size: 11pt; line-height: 1.317; color: #000; }
+.resume-page.resume-letter { width: 612pt; min-width: 612pt; min-height: 792pt; }
+.resume-block { font-family: inherit; margin: 0; padding: 0; border: 0; text-align: left; overflow-wrap: anywhere; }
+.resume-block a { color: inherit; text-decoration: underline; text-underline-offset: 1.5px; }
+.resume-entry { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+.resume-block-content { min-width: 0; }
+.resume-entry-date { flex: 0 1 auto; min-width: 80pt; text-align: right; font-size: 10pt; font-weight: 400; }
+.resume-bullet { position: relative; padding-left: 8.65pt; }
+.resume-bullet-marker { position: absolute; left: 0; font-size: 9pt; }
+
+@page { size: A4; margin: 0; }
+@media print {
+  body * { visibility: hidden !important; }
+  #resume-print, #resume-print * { visibility: visible !important; }
+  #resume-print { position: absolute; inset: 0; margin: 0 !important; zoom: 1 !important; box-shadow: none !important; }
+  .resume-block { break-inside: avoid; }
+}
